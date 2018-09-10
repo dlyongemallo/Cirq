@@ -1,29 +1,19 @@
-"""Demonstrates Deutsch's algorithm.
+"""Demonstrates the Deutsch-Jozsa algorithm.
 
-Deutsch's algorithm is one of the simplest demonstrations of quantum parallelism
-and interference. It takes a black-box oracle implementing a Boolean function f(x),
-and determines whether f(0) and f(1) have the same parity using just one query.
-This version of Deutsch's algorithm is a simplified and improved version from
-Nielsen and Chuang's textbook.
+The Deutsch-Jozsa algorithm takes a black-box oracle implementing a Boolean
+promise function f(x) over an n-bit string x, which is either constant for all
+values of x, or balanced (i.e., it outputs 1 for exactly half the inputs and 0
+for the other half). Any classical algorithm must make 2^{n-1} + 1 queries in
+the worst case to determine whether the f(x) is constant or balanced. The
+Deutsch-Jozsa algorithm does this using a single query to the oracle.
 
 === REFERENCE ===
 
-Deutsch, David. "Quantum theory, the Church-Turing Principle and the universal
-quantum computer." Proc. R. Soc. Lond. A, 400:97, 1985.
-
-Nielsen, Michael A. and Isaac L. Chuang. "Quantum Computation and Quantum
-Information", Cambridge University Press, 2000, pp.32-34.
+Deutsch, David, and Richard Jozsa. "Rapid solutions of problems by quantum
+computation." Proc. R. Soc. Lond. A, 439:553, 1992.
 
 === EXAMPLE OUTPUT ===
 
-Secret function:
-f(x) = <0, 1>
-Circuit:
-0: ───────H───@───H───M('result')───
-              │
-1: ───X───H───X─────────────────────
-Result f(0)⊕f(1):
-result=1
 """
 
 import random
@@ -31,10 +21,13 @@ import random
 import cirq
 from cirq.ops import H, X, CNOT, measure
 
-
 def main():
+    qubit_count = 8
+    circuit_sample_count = 3
+
     # Choose qubits to use.
-    q0, q1 = [cirq.LineQubit(i) for i in range(2)]
+    input_qubits = [cirq.GridQubit(i, 0) for i in range(qubit_count)]
+    output_qubit = cirq.GridQubit(qubit_count, 0)
 
     # Pick a secret 2-bit function and create a circuit to query the oracle.
     secret_function = [random.randint(0, 1) for _ in range(2)]
