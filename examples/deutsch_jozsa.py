@@ -38,7 +38,7 @@ def main():
     print('Secret function:\nf(x) = <{}>'.format(', '.join(str(e) for e in secret_function)))
 
     # Embed the oracle into a quantum circuit querying it exactly once.
-    circuit = make_deutsch_jozsa_circuit(input_qubits, output_qubit, secret_function)
+    circuit = make_deutsch_jozsa_circuit(input_qubits, output_qubit, oracle)
     print('Circuit:')
     print(circuit)
 
@@ -60,11 +60,12 @@ def make_constant_or_balanced_function(qubit_count):
 def make_oracle(input_qubits, output_qubit, secret_function):
     """ Gates implementing the secret function f(x)."""
 
+    # TODO: Put in the actually correct oracle.
     if secret_function[0]:
-        yield [CNOT(q0, q1), X(q1)]
+        yield cirq.X(output_qubit)
 
-    if secret_function[1]:
-        yield CNOT(q0, q1)
+    for qubit in input_qubits:
+        yield cirq.CNOT(qubit, output_qubit)
 
 def make_deutsch_jozsa_circuit(input_qubits, output_qubit, oracle):
     c = cirq.Circuit()
@@ -76,11 +77,15 @@ def make_deutsch_jozsa_circuit(input_qubits, output_qubit, oracle):
         cirq.H.on_each(input_qubits),
     ])
 
-    # # Query oracle.
-    # c.append(oracle)
+    # Query oracle.
+    c.append(oracle)
 
-    # # Measure in X basis.
-    # c.append([H(q0), measure(q0, key='result')])
+    # Measure in X basis.
+    c.append([
+        cirq.H.on_each(input_qubits),
+        cirq.measure(*input_qubits, key='result')
+    ])
+
     return c
 
 if __name__ == '__main__':
