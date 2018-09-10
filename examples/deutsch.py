@@ -49,7 +49,7 @@ def main():
     # Simulate the circuit.
     simulator = cirq.google.XmonSimulator()
     result = simulator.run(circuit)
-    print('Result f(0)⊕f(1):')
+    print('Result of f(0)⊕f(1):')
     print(result)
 
 def make_oracle(q0, q1, secret_function):
@@ -65,8 +65,7 @@ def make_deutsch_circuit(q0, q1, oracle):
     c = cirq.Circuit()
 
     # Initialize qubits.
-    c.append([X(q1)])
-    c.append([H(q0), H(q1)])
+    c.append([X(q1), H(q1), H(q0)])
 
     # Query oracle.
     c.append(oracle)
