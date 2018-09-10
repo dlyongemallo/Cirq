@@ -23,11 +23,10 @@ import cirq
 
 
 def main():
-    qubit_count = 8
-    circuit_sample_count = 3
+    qubit_count = 2
+    circuit_sample_count = 1
 
     # Choose qubits to use.
-    assert qubit_count % 2 == 0
     input_qubits = [cirq.GridQubit(i, 0) for i in range(qubit_count)]
     output_qubit = cirq.GridQubit(qubit_count, 0)
 
@@ -50,10 +49,11 @@ def main():
 
 def make_constant_or_balanced_function(qubit_count):
     """ Create either a constant or balanced function, with equal probability."""
+    function_size = pow(2, qubit_count)
     if random.randint(0, 1):
-        return [random.randint(0, 1)] * qubit_count
+        return [random.randint(0, 1)] * function_size
     else:
-        balanced = [0] * (qubit_count // 2) + [1] * (qubit_count // 2)
+        balanced = [0] * (function_size // 2) + [1] * (function_size // 2)
         np.random.shuffle(balanced)
         return balanced
 
