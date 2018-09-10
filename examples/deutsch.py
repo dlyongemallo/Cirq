@@ -1,9 +1,29 @@
-"""Demonstrates Deutsch's problem.
+"""Demonstrates Deutsch's algorithm.
+
+Deutsch's algorithm is one of the simplest demonstrations of quantum parallelism
+and interference. It takes a black-box oracle implementing a Boolean function f(x),
+and determines whether f(0) and f(1) have the same parity using just one query.
+This version of Deutsch's algorithm is a simplified and improved version from
+Nielsen and Chuang's textbook.
 
 === REFERENCE ===
 
+Deutsch, David. Quantum theory, the Church-Turing Principle and the universal
+quantum computer. Proc. R. Soc. Lond. A, 400:97, 1985.
+
+Nielsen, Michael A. and Isaac L. Chuang. Quantum Computation and Quantum
+Information, Cambridge University Press, 2000, pp.32-34.
+
 === EXAMPLE OUTPUT ===
 
+Secret function:
+f(x) = <0, 1>
+Circuit:
+0: ───────H───@───H───M('result')───
+              │
+1: ───X───H───X─────────────────────
+Result f(0)⊕f(1):
+result=1
 """
 
 import random
