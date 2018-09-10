@@ -9,7 +9,7 @@
 import random
 
 import cirq
-from cirq.ops import H, X, measure
+from cirq.ops import H, X, CNOT, measure
 
 def main():
     # Choose qubits to use.
@@ -28,17 +28,17 @@ def main():
     # Simulate the circuit.
     simulator = cirq.google.XmonSimulator()
     result = simulator.run(circuit)
-    print('Result:')
+    print('Result f(0)⊕f(1):')
     print(result)
 
 def make_oracle(q0, q1, secret_function):
     """ Gates implementing the secret function f(x)."""
 
     if secret_function[0]:
-        yield cirq.X(q1)
+        yield [CNOT(q0, q1), X(q1)]
 
-    if secret_function[0] != secret_function[1]:
-        yield cirq.CNOT(q0, q1)
+    if secret_function[1]:
+        yield CNOT(q0, q1)
 
 def make_deutsch_circuit(q0, q1, oracle):
     c = cirq.Circuit()
@@ -51,7 +51,6 @@ def make_deutsch_circuit(q0, q1, oracle):
     c.append(oracle)
 
     # Measure in X basis.
-    # c.append([H(q0), cirq.measure(*q0, key='result')])
     c.append([H(q0), measure(q0, key='result')])
     return c
 
