@@ -79,6 +79,7 @@ def clifford_optimized_circuit(circuit: circuits.Circuit,
 
         return furthest_i, furthest_op, num_passed_over
 
+    # TODO: https://github.com/quantumlib/Cirq/issues/879
     def try_merge_clifford(cliff_op: ops.GateOperation, start_i: int) -> bool:
         orig_qubit, = cliff_op.qubits
         remaining_cliff_gate = ops.CliffordGate.I
@@ -171,6 +172,7 @@ def clifford_optimized_circuit(circuit: circuits.Circuit,
                 # coverage checker disagrees.
         return 0
 
+    # TODO: Here?
     i = 0
     while i < len(all_ops):
         op = all_ops[i]
