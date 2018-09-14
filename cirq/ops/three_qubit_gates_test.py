@@ -136,7 +136,7 @@ def test_diagram():
         cirq.CSWAP(a, c, d),
         cirq.FREDKIN(a, b, c)
     )
-    assert circuit.to_text_diagram() == """
+    cirq.testing.assert_same_diagram(circuit, """
 0: ───@───@───@───@───@───
       │   │   │   │   │
 1: ───@───X───@───┼───×───
@@ -144,8 +144,8 @@ def test_diagram():
 2: ───X───@───┼───×───×───
               │   │
 3: ───────────@───×───────
-""".strip()
-    assert circuit.to_text_diagram(use_unicode_characters=False) == """
+""")
+    cirq.testing.assert_same_diagram(circuit, """
 0: ---@---@---@---@------@------
       |   |   |   |      |
 1: ---@---X---@---|------swap---
@@ -153,4 +153,4 @@ def test_diagram():
 2: ---X---@---|---swap---swap---
               |   |
 3: -----------@---swap----------
-""".strip()
+""", use_unicode_characters=False)
