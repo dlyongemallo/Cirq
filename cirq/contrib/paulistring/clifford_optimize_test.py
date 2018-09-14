@@ -56,6 +56,40 @@ def test_optimize():
 """)
 
 
+def test_clifford_optimization():
+    q0, q1 = cirq.LineQubit.range(2)
+    c_orig = cirq.Circuit.from_ops(
+        cirq.T(q1),
+        cirq.CNOT(q0, q1),
+        cirq.T(q1),
+        cirq.CNOT(q0, q1),
+        cirq.T(q1),
+    )
+    c_expected = converted_gate_set(
+        cirq.Circuit.from_ops(
+            cirq.CZ(q0, q1),
+            cirq.Z(q0) ** 0.25,
+            cirq.X(q1) ** 0.25,
+            cirq.CZ(q0, q1),
+        ))
+
+    c_opt = clifford_optimized_circuit(c_orig)
+
+    cirq.testing.assert_allclose_up_to_global_phase(
+        c_orig.to_unitary_matrix(),
+        c_opt.to_unitary_matrix(),
+        atol=1e-7,
+    )
+
+    assert c_opt == c_expected
+
+    assert c_opt.to_text_diagram() == """
+0: ───@───[Z]^0.25───@───xxx
+      │              │
+1: ───@───[X]^0.25───@───
+""".strip()
+
+
 def test_remove_czs():
     q0, q1 = cirq.LineQubit.range(2)
     c_orig = cirq.Circuit.from_ops(
