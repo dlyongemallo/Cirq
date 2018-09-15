@@ -67,10 +67,11 @@ def test_clifford_optimization():
     )
     c_expected = converted_gate_set(
         cirq.Circuit.from_ops(
-            cirq.CZ(q0, q1),
-            cirq.Z(q0) ** 0.25,
-            cirq.X(q1) ** 0.25,
-            cirq.CZ(q0, q1),
+            cirq.T(q1),
+            cirq.CNOT(q0, q1),
+            cirq.T(q1),
+            cirq.CNOT(q0, q1),
+            cirq.T(q1),
         ))
 
     c_opt = clifford_optimized_circuit(c_orig)
@@ -83,11 +84,16 @@ def test_clifford_optimization():
 
     assert c_opt == c_expected
 
-    assert c_opt.to_text_diagram() == """
-0: ───@───[Z]^0.25───@───xxx
+    cirq.testing.assert_same_diagram(c_opt, """
+0: ───@───[Z]^0.25───@───
       │              │
 1: ───@───[X]^0.25───@───
-""".strip()
+""")
+#     cirq.testing.assert_same_diagram(c_opt, """
+# 0: ───[Z]^-0.75───────────────────────@─────────────────────────────────────@───[Z]^0.75──────────────────────
+#                                       │                                     │
+# 1: ───[Z]^0.75────[Y]^-0.75───X^0.5───@───[Z]^0.25───[X]^-0.25───[Z]^0.75───@───[Z]^0.75───[Y]^0.75───X^0.5───
+# """)
 
 
 def test_remove_czs():
