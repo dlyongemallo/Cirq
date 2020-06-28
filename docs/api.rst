@@ -19,6 +19,15 @@ Classes for identifying the qubits and hardware you want to operate on.
     cirq.NamedQubit
     cirq.Qid
 
+.. inheritance-diagram::
+    cirq.Device
+    cirq.GridQid
+    cirq.GridQubit
+    cirq.LineQid
+    cirq.LineQubit
+    cirq.NamedQubit
+    cirq.Qid
+
 
 Measurement
 '''''''''''
@@ -32,6 +41,8 @@ Methods and classes for performing measurement operations.
     cirq.measure_each
     cirq.MeasurementGate
 
+.. inheritance-diagram::
+    cirq.MeasurementGate
 
 Unitary Gates and Operations
 ''''''''''''''''''''''''''''
@@ -108,6 +119,44 @@ Unitary effects that can be applied to one or more qubits.
     cirq.ZPowGate
     cirq.ZZPowGate
 
+.. inheritance-diagram::
+    cirq.CCXPowGate
+    cirq.CCZPowGate
+    cirq.CSwapGate
+    cirq.CXPowGate
+    cirq.CZPowGate
+    cirq.ControlledGate
+    cirq.ControlledOperation
+    cirq.EigenGate
+    cirq.FSimGate
+    cirq.Gate
+    cirq.GlobalPhaseOperation
+    cirq.HPowGate
+    cirq.ISwapPowGate
+    cirq.IdentityGate
+    cirq.MatrixGate
+    cirq.Operation
+    cirq.PhaseGradientGate
+    cirq.PhasedISwapPowGate
+    cirq.PhasedXPowGate
+    cirq.PhasedXZGate
+    cirq.QuantumFourierTransformGate
+    cirq.RandomGateChannel
+    cirq.SingleQubitGate
+    cirq.SwapPowGate
+    cirq.TaggedOperation
+    cirq.ThreeQubitDiagonalGate
+    cirq.ThreeQubitGate
+    cirq.TwoQubitDiagonalGate
+    cirq.TwoQubitGate
+    cirq.WaitGate
+    cirq.XPowGate
+    cirq.XXPowGate
+    cirq.YPowGate
+    cirq.YYPowGate
+    cirq.ZPowGate
+    cirq.ZZPowGate
+
 
 Noisy Gates and Operations
 ''''''''''''''''''''''''''
@@ -129,6 +178,18 @@ the more general concept of a noisy open system quantum evolution.
     cirq.phase_damp
     cirq.phase_flip
     cirq.reset
+    cirq.AmplitudeDampingChannel
+    cirq.AsymmetricDepolarizingChannel
+    cirq.BitFlipChannel
+    cirq.DepolarizingChannel
+    cirq.GeneralizedAmplitudeDampingChannel
+    cirq.NoiseModel
+    cirq.PhaseDampingChannel
+    cirq.PhaseFlipChannel
+    cirq.ResetChannel
+    cirq.VirtualTag
+
+.. inheritance-diagram::
     cirq.AmplitudeDampingChannel
     cirq.AsymmetricDepolarizingChannel
     cirq.BitFlipChannel
@@ -170,6 +231,22 @@ and products of Pauli operations.
     cirq.SingleQubitCliffordGate
     cirq.StabilizerStateChForm
 
+.. inheritance-diagram::
+    cirq.BaseDensePauliString
+    cirq.CliffordState
+    cirq.CliffordTableau
+    cirq.DensePauliString
+    cirq.MutableDensePauliString
+    cirq.Pauli
+    cirq.PauliInteractionGate
+    cirq.PauliString
+    cirq.PauliStringGateOperation
+    cirq.PauliStringPhasor
+    cirq.PauliSum
+    cirq.PauliTransform
+    cirq.SingleQubitCliffordGate
+    cirq.StabilizerStateChForm
+
 
 Circuits
 ''''''''
@@ -193,6 +270,17 @@ Circuits, Operations, and Moments.
     cirq.QubitOrder
     cirq.QubitOrderOrList
     cirq.Unique
+
+.. inheritance-diagram::
+    cirq.Circuit
+    cirq.CircuitDag
+    cirq.GateOperation
+    cirq.InsertStrategy
+    cirq.Moment
+    cirq.ParallelGateOperation
+    cirq.QubitOrder
+    cirq.Unique
+
 
 
 Importing and Exporting
@@ -277,9 +365,44 @@ results.
     cirq.StateVectorTrialResult
     cirq.StepResult
     cirq.Sweep
-    cirq.Sweepable
     cirq.TrialResult
     cirq.UnitSweep
+    cirq.Zip
+
+.. inheritance-diagram::
+    cirq.ActOnStateVectorArgs
+    cirq.CircuitSampleJob
+    cirq.CliffordSimulator
+    cirq.CliffordSimulatorStepResult
+    cirq.CliffordTrialResult
+    cirq.Collector
+    cirq.DensityMatrixSimulator
+    cirq.DensityMatrixSimulatorState
+    cirq.DensityMatrixStepResult
+    cirq.DensityMatrixTrialResult
+    cirq.ExpressionMap
+    cirq.Linspace
+    cirq.ListSweep
+    cirq.ParamResolver
+    cirq.PauliSumCollector
+    cirq.Points
+    cirq.Product
+    cirq.Sampler
+    cirq.SimulatesAmplitudes
+    cirq.SimulatesFinalState
+    cirq.SimulatesIntermediateState
+    cirq.SimulatesIntermediateStateVector
+    cirq.SimulatesSamples
+    cirq.SimulationTrialResult
+    cirq.Simulator
+    cirq.SparseSimulatorStep
+    cirq.StateVectorMixin
+    cirq.StateVectorSimulatorState
+    cirq.StateVectorStepResult
+    cirq.StateVectorTrialResult
+    cirq.StepResult
+    cirq.Sweep
+    cirq.TrialResult
     cirq.Zip
 
 
@@ -293,6 +416,10 @@ Classes and methods for visualizing data.
 
     cirq.plot_state_histogram
     cirq.scatter_plot_normalized_kak_interaction_coefficients
+    cirq.Heatmap
+    cirq.TextDiagramDrawer
+
+.. inheritance-diagram::
     cirq.Heatmap
     cirq.TextDiagramDrawer
 
@@ -386,6 +513,41 @@ the magic methods that can be implemented.
     cirq.SupportsTraceDistanceBound
     cirq.SupportsUnitary
 
+.. inheritance-diagram::
+    cirq.ApplyChannelArgs
+    cirq.ApplyMixtureArgs
+    cirq.ApplyUnitaryArgs
+    cirq.CircuitDiagramInfo
+    cirq.CircuitDiagramInfoArgs
+    cirq.QasmArgs
+    cirq.QasmOutput
+    cirq.QuilFormatter
+    cirq.QuilOutput
+    cirq.SupportsActOn
+    cirq.SupportsApplyChannel
+    cirq.SupportsApplyMixture
+    cirq.SupportsApproximateEquality
+    cirq.SupportsChannel
+    cirq.SupportsCircuitDiagramInfo
+    cirq.SupportsCommutes
+    cirq.SupportsConsistentApplyUnitary
+    cirq.SupportsDecompose
+    cirq.SupportsDecomposeWithQubits
+    cirq.SupportsEqualUpToGlobalPhase
+    cirq.SupportsExplicitHasUnitary
+    cirq.SupportsExplicitNumQubits
+    cirq.SupportsExplicitQidShape
+    cirq.SupportsJSON
+    cirq.SupportsMeasurementKey
+    cirq.SupportsMixture
+    cirq.SupportsParameterization
+    cirq.SupportsPhase
+    cirq.SupportsQasm
+    cirq.SupportsQasmWithArgs
+    cirq.SupportsQasmWithArgsAndQubits
+    cirq.SupportsTraceDistanceBound
+    cirq.SupportsUnitary
+
 
 Optimization
 ''''''''''''
@@ -407,6 +569,19 @@ Classes and methods for rewriting circuits.
     cirq.single_qubit_op_to_framed_phase_form
     cirq.stratified_circuit
     cirq.two_qubit_matrix_to_operations
+    cirq.ConvertToCzAndSingleGates
+    cirq.DropEmptyMoments
+    cirq.DropNegligible
+    cirq.EjectPhasedPaulis
+    cirq.EjectZ
+    cirq.ExpandComposite
+    cirq.MergeInteractions
+    cirq.MergeSingleQubitGates
+    cirq.PointOptimizationSummary
+    cirq.PointOptimizer
+    cirq.SynchronizeTerminalMeasurements
+
+.. inheritance-diagram::
     cirq.ConvertToCzAndSingleGates
     cirq.DropEmptyMoments
     cirq.DropNegligible
@@ -461,6 +636,17 @@ run experiments.
     cirq.experiments.T2DecayResult
     cirq.experiments.TomographyResult
 
+.. inheritance-diagram::
+    cirq.experiments.CrossEntropyResult
+    cirq.experiments.GridInteractionLayer
+    cirq.experiments.RabiResult
+    cirq.experiments.RandomizedBenchMarkResult
+    cirq.experiments.SingleQubitReadoutCalibrationResult
+    cirq.experiments.StateTomographyExperiment
+    cirq.experiments.T1DecayResult
+    cirq.experiments.T2DecayResult
+    cirq.experiments.TomographyResult
+
 
 Ion traps and neutral atoms
 '''''''''''''''''''''''''''
@@ -479,6 +665,11 @@ Support for ion trap an neutral atom devices.
     cirq.IonDevice
     cirq.NeutralAtomDevice
 
+.. inheritance-diagram::
+    cirq.ConvertToIonGates
+    cirq.ConvertToNeutralAtomGates
+    cirq.IonDevice
+    cirq.NeutralAtomDevice
 
 
 Google
@@ -528,6 +719,32 @@ Functionality specific to quantum hardware and services from Google.
     cirq.google.SerializingArg
     cirq.google.Sycamore
     cirq.google.Sycamore23
+    cirq.google.SycamoreGate
+    cirq.google.XmonDevice
+
+.. inheritance-diagram::
+    cirq.google.AnnealSequenceSearchStrategy
+    cirq.google.Calibration
+    cirq.google.ConvertToSqrtIswapGates
+    cirq.google.ConvertToSycamoreGates
+    cirq.google.ConvertToXmonGates
+    cirq.google.DeserializingArg
+    cirq.google.Engine
+    cirq.google.EngineJob
+    cirq.google.EngineProcessor
+    cirq.google.EngineProgram
+    cirq.google.EngineTimeSlot
+    cirq.google.GateOpDeserializer
+    cirq.google.GateOpSerializer
+    cirq.google.GateTabulation
+    cirq.google.GreedySequenceSearchStrategy
+    cirq.google.LinePlacementStrategy
+    cirq.google.PhysicalZTag
+    cirq.google.ProtoVersion
+    cirq.google.QuantumEngineSampler
+    cirq.google.SerializableDevice
+    cirq.google.SerializableGateSet
+    cirq.google.SerializingArg
     cirq.google.SycamoreGate
     cirq.google.XmonDevice
 
@@ -602,6 +819,16 @@ operation.
     cirq.testing.EqualsTester
     cirq.testing.OrderTester
 
+.. inheritance-diagram::
+    cirq.ABCMetaImplementAnyOneOf
+    cirq.ArithmeticOperation
+    cirq.InterchangeableQubitsGate
+    cirq.LinearDict
+    cirq.PeriodicValue
+    cirq.testing.EqualsTester
+    cirq.testing.OrderTester
+
+
 
 Algebra and Representation
 ''''''''''''''''''''''''''
@@ -663,6 +890,12 @@ Algebra and Representation
     cirq.KakDecomposition
     cirq.Timestamp
 
+.. inheritance-diagram::
+    cirq.AxisAngleDecomposition
+    cirq.Duration
+    cirq.KakDecomposition
+    cirq.Timestamp
+
 
 Quantum Information Science
 '''''''''''''''''''''''''''
@@ -700,6 +933,12 @@ important roles in the internal machinery of the library.
     cirq.SingleQubitPauliStringGateOperation
     cirq.TParamVal
 
+.. inheritance-diagram::
+    cirq.ConstantQubitNoiseModel
+    cirq.LinearCombinationOfGates
+    cirq.LinearCombinationOfOperations
+    cirq.SingleQubitPauliStringGateOperation
+
 
 Deprecated
 ''''''''''
@@ -714,6 +953,12 @@ These objects and methods will be removed in a future version of the library.
     cirq.subwavefunction
     cirq.validate_normalized_state
     cirq.wavefunction_partial_trace_as_mixture
+    cirq.SimulatesIntermediateWaveFunction
+    cirq.WaveFunctionSimulatorState
+    cirq.WaveFunctionStepResult
+    cirq.WaveFunctionTrialResult
+
+.. inheritance-diagram::
     cirq.SimulatesIntermediateWaveFunction
     cirq.WaveFunctionSimulatorState
     cirq.WaveFunctionStepResult
