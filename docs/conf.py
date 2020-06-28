@@ -147,11 +147,15 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.doctest',
+    'sphinx.ext.graphviz',
+    'sphinx.ext.inheritance_diagram',
     'sphinx.ext.mathjax',
     'sphinx.ext.napoleon',
     'sphinx.ext.viewcode',
     'sphinx_markdown_tables',
 ]
+
+inheritance_graph_attrs = dict(rankdir="LR", size='""')
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
