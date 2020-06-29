@@ -39,6 +39,7 @@ User Documentation
     interop.ipynb
     qudits.ipynb
     api
+    inheritance
 
 
 .. toctree::
