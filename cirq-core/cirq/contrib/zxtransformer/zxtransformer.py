@@ -24,6 +24,7 @@ from cirq import circuits
 
 import pyzx as zx
 from pyzx.circuit import gates as zx_gates
+# from fractions import Fraction
 
 
 @functools.cache
@@ -41,6 +42,8 @@ def cirq_gate_to_zx_gate(
     cirq_gate: Optional[cirq.Gate], qubits: List[int]
 ) -> Optional[zx_gates.Gate]:
     """Convert a Cirq gate to a PyZX gate."""
+    # if cirq.Gate is None:
+    #    return None
 
     if isinstance(cirq_gate, (cirq.Rx, cirq.XPowGate)):
         return zx_gates.XPhase(*qubits, phase=Fraction(cirq_gate.exponent))
